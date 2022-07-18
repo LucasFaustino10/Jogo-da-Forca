@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Jogo da Forca - Lucas Faustino</title>
+</head>
+
+<body>
+  <header>
+  </header>
+  <main>
+    <section class="menu-section">
+      <h1>Jogo da Forca</h1>
+      <div class="botoes-home">
+        <button class="btn-primario btn-iniciar" onclick="goToGamePage()">
+          começar a jogar
+        </button>
+
+        <button class="btn-secundario btn-adicionar" onclick="goToNewWordPage()">
+          adicionar palavra
+        </button>
+      </div>
+    </section>
+    <section class="game-section hide">
+      <p id="nome-categoria">CATEGORIA</p>
+      <div id="categoria"></div>
+      <img id="forca" src="img/Vectorforca.svg" alt="forca" />
+      <div id="palavra-secreta">
+      </div>
+      <div id="teclado">
+        <div class="teclas">
+          <button id="tecla-A" onclick="checkChosenLetter('A')">A</button>
+          <button id="tecla-B" onclick="checkChosenLetter('B')">B</button>
+          <button id="tecla-C" onclick="checkChosenLetter('C')">C</button>
+          <button id="tecla-D" onclick="checkChosenLetter('D')">D</button>
+          <button id="tecla-E" onclick="checkChosenLetter('E')">E</button>
+          <button id="tecla-F" onclick="checkChosenLetter('F')">F</button>
+          <button id="tecla-G" onclick="checkChosenLetter('G')">G</button>
+          <button id="tecla-H" onclick="checkChosenLetter('H')">H</button>
+          <button id="tecla-I" onclick="checkChosenLetter('I')">I</button>
+        </div>
+        <div class="teclas">
+          <button id="tecla-J" onclick="checkChosenLetter('J')">J</button>
+          <button id="tecla-K" onclick="checkChosenLetter('K')">K</button>
+          <button id="tecla-L" onclick="checkChosenLetter('L')">L</button>
+          <button id="tecla-M" onclick="checkChosenLetter('M')">M</button>
+          <button id="tecla-N" onclick="checkChosenLetter('N')">N</button>
+          <button id="tecla-O" onclick="checkChosenLetter('O')">O</button>
+          <button id="tecla-P" onclick="checkChosenLetter('P')">P</button>
+          <button id="tecla-Q" onclick="checkChosenLetter('Q')">Q</button>
+          <button id="tecla-R" onclick="checkChosenLetter('R')">R</button>
+        </div>
+        <div class="teclas">
+          <button id="tecla-S" onclick="checkChosenLetter('S')">S</button>
+          <button id="tecla-T" onclick="checkChosenLetter('T')">T</button>
+          <button id="tecla-U" onclick="checkChosenLetter('U')">U</button>
+          <button id="tecla-V" onclick="checkChosenLetter('V')">V</button>
+          <button id="tecla-W" onclick="checkChosenLetter('W')">W</button>
+          <button id="tecla-X" onclick="checkChosenLetter('X')">X</button>
+          <button id="tecla-Y" onclick="checkChosenLetter('Y')">Y</button>
+          <button id="tecla-Z" onclick="checkChosenLetter('Z')">Z</button>
+          <button id="tecla-Ç" onclick="checkChosenLetter('Ç')">Ç</button>
+        </div>
+      </div>
+      <div class="botoes-addpalavra">
+        <button class="button-game" id="reiniciarbtn" onclick="reload()">Novo jogo</button>
+        <button class="button-game tracado" onclick="reload()">
+          desistir
+        </button>
+
+      </div>
+    </section>
+    <section class="new-word-section hide">
+      <div class="form">
+        <h2>Digite a sua <strong>palavra</strong></h2>
+
+        <input id="textarea" class="inputPalavra" placeholder="..."></input>
+      </div>
+
+      <div class="form">
+        <h2>Digite a sua <strong>categoria</strong></h2>
+
+        <input id="textarea" class="inputCategoria" placeholder="..."></input>
+      </div>
+      <div class="warning">
+        <p><span>⚠</span> Máximo de 8 letras por palavra.</p>
+      </div>
+      <div class="botoes-addpalavra">
+        <button type="submit" class="btn-primario btn-stylev2" onclick="sendWord()">
+          salvar e sair
+        </button>
+
+
+        <button class="btn-secundario btn-cancelar" onclick="returnToMenu()">
+          cancelar
+        </button>
+
+      </div>
+    </section>
+    <section class="victory-section hide">
+      <h1>Você ganhou!</h1>
+      <p>Parabéns, saboreie sua vitória e jogue novamente!</p>
+      <div class="botoes-addpalavra">
+        <button class="btn-primario btn-stylev2" onclick="reload()">Novo jogo</button>
+      </div>
+    </section>
+    <section class="defeat-section hide">
+      <h1>Você perdeu!</h1>
+      <p>Não desista, tente novamente!</p>
+
+      <div class="botoes-addpalavra">
+        <button class="btn-primario btn-stylev2 " onclick="reload()">Novo jogo</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Desenvolvido por Lucas Faustino</p>
+    <div class="icones">
+      <a href="https://www.linkedin.com/in/lucasfaustino27/" target="_blank">
+        <img class="redesocial-footer" src="img/linkedin.svg" alt="linkedin" />
+      </a>
+      <a href="https://github.com/LucasFaustino10" target="_blank">
+        <img class="github" src="img/github.svg" alt="github" />
+      </a>
+    </div>
+  </footer>
+  <script src="./js/words.js"></script>
+  <script src="./js/variables.js"></script>
+  <script src="./js/changepages.js"></script>
+  <script src="./js/script.js"></script>
+
+</body>
+
+</html>
